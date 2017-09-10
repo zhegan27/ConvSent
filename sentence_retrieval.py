@@ -137,48 +137,7 @@ def find_sent_embedding(whole, n_words=21102, img_w=300, img_h=48, feature_maps=
     np.savez('./bookcorpus_embedding.npz', sent_emb=sent_emb)
     
     return sent_emb
-    
         
-def get_idx_from_sent(sent, word_idx_map):
-    """
-    Transforms sentence into a list of indices.
-    """
-    x = []
-    words = sent.split()
-    for word in words:
-        if word in word_idx_map:
-            x.append(word_idx_map[word])
-        else:
-            x.append(1)
-    x.append(0)
-    return x
-    
-def nearest_neightbor(input_sent, z_emb, text_new):
-    
-    x = get_idx_from_sent(input_sent,wordtoix)
-    f_embed = find_sent_embedding(whole, n_words=21102)
-    
-    x = np.array(x)
-    mask = np.ones((len(x)))
-    x = x[:,None]
-    mask = mask[:,None]
-    target_emb = f_embed(x[::-1],mask[::-1])
-    
-    cos_similarity = []
-    for i in range(z_emb.shape[0]):
-        vector = z_emb[i]
-        result = 1 - spatial.distance.cosine(target_emb, vector)
-        cos_similarity.append(result)
-    top_indices = np.argsort(cos_similarity)[::-1]
-    
-    print text_new[top_indices[0]], cos_similarity[top_indices[0]]
-    print text_new[top_indices[1]], cos_similarity[top_indices[1]]
-    print text_new[top_indices[2]], cos_similarity[top_indices[2]]
-    print text_new[top_indices[3]], cos_similarity[top_indices[3]]
-    print text_new[top_indices[4]], cos_similarity[top_indices[4]]
-    
-    return target_emb
-    
 
 if __name__ == '__main__':
     
@@ -204,9 +163,6 @@ if __name__ == '__main__':
     """ sentence retrieval """
     x = np.load('./bookcorpus_embedding.npz')
     sent_emb = x['sent_emb']
-    
-    x1 = []
-    x1.append(get_idx_from_sent("you needed me ?",wordtoix))
     
     idx = 0
     print whole_text[idx]

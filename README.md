@@ -16,16 +16,16 @@ This code is written in python. To use it you will need:
 
 ## Getting started
 
-Inside the ./data file, I provided a random 1M sentences from the whole bookcorpus dataset for training for the demo purposes. 
+Inside the ./data file, I provided a randomly sampled 1M sentences from the BookCorpus dataset for demo purposes. 
 
-We provide the CNN-LSTM auto-encoder training code here. The training code for the future predictor and the composite model is very similar to this. The training code for the hierarchical model can be also relatively easily revised based on this code. 
+We provide the CNN-LSTM auto-encoder training code here. The training code for the future predictor and the composite model is similar to this. The training code for the hierarchical model can be also easily revised based on this code. 
 
 1. Run `train_autoencoder.py` to start training. 
 ```
 THEANO_FLAGS=mode=FAST_RUN,device=gpu,floatX=float32 python train_autoencoder.py 
 ```
 
-2. After training, you can run `sentence_retrieval.py` and `vector_compositionality` to do the qualitative analysis experiment in the paper. 
+2. After training, you can run `sentence_retrieval.py` and `vector_compositionality.py` to do the qualitative analysis experiments in the paper. 
 
 ```
 you needed me ? - you got me ? + i got you . = i needed you .
