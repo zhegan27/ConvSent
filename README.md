@@ -18,7 +18,7 @@ This code is written in python. To use it you will need:
 
 Inside the ./data file, I provided a randomly sampled 1M sentences from the BookCorpus dataset for demo purposes. 
 
-We provide the CNN-LSTM auto-encoder training code here. The training code for the future predictor and the composite model is similar to this. The training code for the hierarchical model can be also easily revised based on this code. 
+We provide the CNN-LSTM auto-encoder training code here. The training code for the future predictor and the composite model is similar to this. The training code for the hierarchical model can be also relatively easily revised based on this code. 
 
 1. Run `train_autoencoder.py` to start training. 
 ```
